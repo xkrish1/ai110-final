@@ -67,6 +67,19 @@ Five distinct user profiles were tested:
 
 ---
 
-## 9. Personal Reflection
+## 9. AI Collaboration
 
-Building this recommender made the "black box" feeling of Spotify Discover Weekly feel much more concrete. Even a 5-rule scoring function on 20 songs produces results that genuinely feel personalized—which explains why real platforms with millions of signals and thousands of features feel almost magical. The most surprising moment was discovering how much the valence bonus subtly shaped every profile toward brighter songs; I had added it as a small aesthetic touch but it ended up acting like an invisible thumb on the scale. That's a real lesson: every design choice in a scoring function is an implicit value judgment about what "good music" means, and those judgments compound. Human oversight still matters because no scoring formula can capture the context of why someone wants a particular song at a particular moment—that's still a domain only the listener understands.
+**How AI was used during this project:**
+AI (Claude) was used throughout — for designing the agentic loop architecture, writing the tool-use scaffolding in `agent.py`, drafting the RAG knowledge documents, and building the eval harness. It also served as a real-time debugging partner when the `.env` key wasn't loading and when Streamlit import paths conflicted between `run src/app.py` and direct execution.
+
+**One instance where AI gave a helpful suggestion:**
+When building the eval harness, Claude suggested separating `confidence_score()` into its own function rather than inlining it in the print loop. That made the metric reusable across test cases and easier to average at the end — a clean structural improvement that I wouldn't have thought to do immediately.
+
+**One instance where AI's suggestion was flawed:**
+Claude initially generated the `score_songs` tool schema with `"energy": {"type": "string"}` instead of `"type": "number"}`. This would have silently broken the scoring math — Python would have received a string like `"0.85"` and the subtraction `abs(song["energy"] - target_energy)` would have thrown a TypeError at runtime. Always verify tool schema types manually; the AI does not automatically catch type mismatches between the schema and the actual function logic.
+
+---
+
+## 10. Personal Reflection
+
+Building this recommender made the "black box" feeling of Spotify Discover Weekly feel much more concrete. Even a 5-rule scoring function on 20 songs produces results that genuinely feel personalized — which explains why real platforms with millions of signals and thousands of features feel almost magical. The most surprising moment was discovering how much the valence bonus subtly shaped every profile toward brighter songs; I had added it as a small aesthetic touch but it ended up acting like an invisible thumb on the scale. That's a real lesson: every design choice in a scoring function is an implicit value judgment about what "good music" means, and those judgments compound. Human oversight still matters because no scoring formula can capture the context of why someone wants a particular song at a particular moment — that's still a domain only the listener understands.

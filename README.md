@@ -68,6 +68,14 @@ python3 -m src.main
 
 ---
 
+## Demo Walkthrough
+
+🎬 **[Watch the Loom demo](YOUR_LOOM_LINK_HERE)**
+
+> Replace the link above with your Loom URL after recording.
+
+---
+
 ## Sample Interactions
 
 **Input:** `"I need something chill to study to"`
