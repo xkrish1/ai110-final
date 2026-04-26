@@ -31,21 +31,7 @@ and the agent:
 
 ## Architecture
 
-```
-User (natural language)
-        ↓
-[ Streamlit Chat UI ]  ←  src/app.py
-        ↓
-[ MusicAgent ]  ←  src/agent.py
-  ├─ Claude claude-sonnet-4-6 (tool-use loop)
-  ├─ Tool: score_songs  →  src/recommender.py  →  data/songs.csv
-  └─ Tool: get_genre_knowledge  →  knowledge/*.md  (RAG)
-        ↓
-[ Recommendations + Reasoning Steps ]
-        ↓
-[ Eval Harness ]  ←  tests/eval_harness.py
-  └─ 6 predefined profiles → pass/fail + confidence scores
-```
+![System Architecture](assets/final_uml.png)
 
 **Data flow:** User message → agent history → Claude decides which tools to call →
 tool results injected back into context → Claude writes final response →
