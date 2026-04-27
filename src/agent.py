@@ -47,7 +47,7 @@ GENRE_TO_FILE = {
     "country": "folk.md",
     "jazz": "folk.md",
     "synthwave": "pop.md",
-    "edm": "rock.md",
+    "edm": "edm.md",
     "classical": "ambient.md",
 }
 
@@ -57,6 +57,11 @@ Your personality is warm, enthusiastic, and concise — like a friend who knows 
 You have two tools available:
 - score_songs: call this with a user preference dict to get a ranked list of songs from the catalog.
 - get_genre_knowledge: call this with a genre name to get background knowledge that helps you explain picks.
+
+IMPORTANT — mood must be one of these exact values from the catalog:
+happy, chill, intense, relaxed, focused, moody, confident, melancholy
+Map the user's words to the closest catalog mood before calling score_songs.
+Examples: "energetic" → "intense", "sad" → "melancholy", "peaceful" → "chill", "pumped up" → "intense"
 
 Rules:
 1. Always call score_songs first before making any recommendations.
