@@ -70,9 +70,7 @@ python3 -m src.main
 
 ## Demo Walkthrough
 
-🎬 **[Watch the Loom demo](YOUR_LOOM_LINK_HERE)**
-
-> Replace the link above with your Loom URL after recording.
+🎬 **[Watch the Loom demo](https://www.loom.com/share/8d67204e7a2f402a836af12d0918ab77)**
 
 ---
 
